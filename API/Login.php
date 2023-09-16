@@ -20,7 +20,7 @@
         //creates an sql statement
 		$stmt = $conn->prepare("SELECT ID,FirstName,LastName FROM Users WHERE (Username=? AND Password=?)");
         //binds the input data to the sql statement
-		$stmt->bind_param("ss", $input["Username"], $input["Password"]);
+		$stmt->bind_param("ss", $input["username"], $input["password"]);
         //executes the sql statment
 		$stmt->execute();
         //gets the results from the sql statement
@@ -52,7 +52,7 @@
     //returns an error to the front end
     function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstname":"","lastname":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
@@ -60,7 +60,7 @@
     //compile data into json format and return info to the front end
     function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstname":"' . $firstName . '","lastname":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
